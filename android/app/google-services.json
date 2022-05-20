@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "918555429921",
+    "project_id": "universitydemo-e8ea6",
+    "storage_bucket": "universitydemo-e8ea6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918555429921:android:88191ec300bcc43580a760",
+        "android_client_info": {
+          "package_name": "com.universitydemo.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918555429921-2asjqru4s1ahuo7b1gle9f74h9ugp6k7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.universitydemo.com",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "918555429921-scdh8qc7u74v36jmcoe279skvikf5ukh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASHolwc2yf54UBU7IDpTe43JagRcT6eLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918555429921-scdh8qc7u74v36jmcoe279skvikf5ukh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
