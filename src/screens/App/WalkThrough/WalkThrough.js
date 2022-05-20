@@ -18,7 +18,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import { updateProfile } from "../../../redux/actions/auth";
 import { connect } from "react-redux";
-import { Persons, Success1 } from "../../../assets";
+import { Persons, Success1, walk1, walk2, walk3, walk4 } from "../../../assets";
 import { useNavigation } from "@react-navigation/native";
 import fonts from "../../../theme/fonts";
 import colors from "../../../theme/colors";
@@ -39,104 +39,78 @@ const WalkThrough = ({
   const [colorful, setcolorful] = useState(1);
   const nextsecreen = () => {
     if (walkhrough == 4) {
-      navigation.navigate("TermsCondition");
+      navigation.navigate("Signup");
     }
     setwalkhrough(walkhrough + 1);
   };
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: colors.backcolor }}>
+      <Headers1 title={"Back"}/>
       {walkhrough == 1 && (
-        <View style={{ flex: 1 }}>
-          <View
-            style={{
-              alignItems: "center",
-              paddingTop: "10%",
-            }}
-          >
-            <Image source={Success1} style={styles.logo_blue} />
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <View style={{}}>
+            <Image source={walk1} style={styles.logo_blue} />
           </View>
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              paddingTop: "10%",
-            }}
-          >
+          <View style={{}}>
+            <Text style={{ color: "gray", fontSize: 16, paddingTop: "20%" }}>
+              Tap to connect with all the
+            </Text>
             <Text style={{ color: "gray", fontSize: 16 }}>
-              Tap to connect with all the{"\n"} First Aid Kit Points around you
+              First Aid Kit Points around you
             </Text>
           </View>
         </View>
       )}
       {walkhrough == 2 && (
-        <View style={{ flex: 1 }}>
-          <View
-            style={{
-              alignItems: "center",
-              paddingTop: "10%",
-            }}
-          >
-            <Image source={Success1} style={styles.logo_blue} />
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <View style={{}}>
+            <Image source={walk2} style={styles.logo_blue} />
           </View>
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              paddingTop: "10%",
-            }}
-          >
-            <Text style={{ color: "gray", fontSize: 16 }}>
-              Request shops to drop FA Kits {"\n"}to drop your location in
-              emergency
-              {"\n"} situations
+          <View style={{}}>
+            <Text style={{ color: "gray", fontSize: 16, paddingTop: "20%" }}>
+              Request shops to drop FA Kits
             </Text>
+            <Text style={{ color: "gray", fontSize: 16 }}>
+              to drop your location in emergency
+            </Text>
+            <Text style={{ color: "gray", fontSize: 16 }}>situations</Text>
           </View>
         </View>
       )}
       {walkhrough == 3 && (
-        <View style={{ flex: 1 }}>
-          <View
-            style={{
-              alignItems: "center",
-              paddingTop: "10%",
-            }}
-          >
-            <Image source={Success1} style={styles.logo_blue} />
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <View style={{}}>
+            <Image source={walk3} style={styles.logo_blue} />
           </View>
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              paddingTop: "10%",
-            }}
-          >
-            <Text style={{ color: "gray", fontSize: 16 }}>
-              inform your friends and family{"\n"}when you are in emergency
-              {"\n"}situations
+          <View style={{}}>
+            <Text style={{ color: "gray", fontSize: 16, paddingTop: "20%" }}>
+              inform your friends and family
             </Text>
+            <Text style={{ color: "gray", fontSize: 16 }}>
+              when you are in emergency
+            </Text>
+            <Text style={{ color: "gray", fontSize: 16 }}>situations</Text>
           </View>
         </View>
       )}
       {walkhrough == 4 && (
-        <View style={{ flex: 1 }}>
-          <View
-            style={{
-              alignItems: "center",
-              paddingTop: "10%",
-            }}
-          >
-            <Image source={Success1} style={styles.logo_blue} />
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <View style={{}}>
+            <Image source={walk4} style={styles.logo_blue} />
           </View>
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              paddingTop: "10%",
-            }}
-          >
-            <Text style={{ color: "gray", fontSize: 16 }}>
-              Accessible by Hotkeys,Voice{"/n"}Commands
+          <View style={{}}>
+            <Text style={{ color: "gray", fontSize: 16, paddingTop: "20%" }}>
+              Accessible by Hotkeys,Voice
             </Text>
+            <Text style={{ color: "gray", fontSize: 16 }}>Commands</Text>
           </View>
         </View>
       )}
@@ -148,9 +122,9 @@ const WalkThrough = ({
           paddingBottom: "10%",
         }}
       >
-        <View>
+        <TouchableOpacity onPress={()=>navigation.navigate("Emergency")}>
           <Text style={{ color: "red" }}>Skip</Text>
-        </View>
+        </TouchableOpacity>
         <View style={{ flexDirection: "row" }}>
           {walkhrough > 0 ? (
             <View>
@@ -210,8 +184,8 @@ const WalkThrough = ({
 };
 const styles = StyleSheet.create({
   logo_blue: {
-    height: 300,
-    width: 300,
+    height: 250,
+    width: 250,
     resizeMode: "contain",
   },
 });

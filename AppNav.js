@@ -36,9 +36,11 @@ import BlockedDrivers from "./src/screens/App/BlockedDrivers/BlockedDrivers";
 import OtpSignUp from "./src/screens/Auth/OtpSignUp";
 import RequestSent from "./src/screens/App/RequestSent/RequestSent";
 import RequestProgress from "./src/screens/App/RequestProgress";
+import Helping from "./src/screens/App/Helping";
 import { LogBox } from "react-native";
 import Contactus from "./src/screens/App/Contactus/Contactus";
 import EmergencyContact from "./src/screens/App/EmergencyContact/EmergencyContact";
+import SendingRequest from "./src/screens/App/SendingRequest";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Drawer = createDrawerNavigator();
@@ -90,6 +92,9 @@ export function DrawerNav({ isLoggedIn }) {
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="RequestSent" component={RequestSent} />
         <Drawer.Screen name="RequestProgress" component={RequestProgress} />
+        <Drawer.Screen name="SendingRequest" component={SendingRequest} />
+        <Drawer.Screen name="Helping" component={Helping} />
+
       </Drawer.Navigator>
     </NavigationContainer>
   );

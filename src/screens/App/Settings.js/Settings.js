@@ -48,7 +48,7 @@ const Settings = ({ signin, route, userData, signupwithfb, logoutSuccess }) => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: colors.backcolor,
       }}
     >
       <Headers1 title="Back" />
@@ -56,42 +56,56 @@ const Settings = ({ signin, route, userData, signupwithfb, logoutSuccess }) => {
         <View>
           <Text style={{ fontWeight: "bold", fontSize: 22 }}>Settings</Text>
         </View>
-        <View
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Signup")}
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: 10,
+            marginTop: 20,
           }}
         >
-          <Text style={{ fontSize: 18, color: "gray" }}>
+          <Text style={{ fontSize: 16, color: "gray" }}>
             Change Mobile number
           </Text>
           <Entypo name="chevron-right" color={"black"} size={24} />
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("EmergencyContact")}
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
             marginTop: 10,
           }}
         >
-          <Text style={{ fontSize: 18, color: "gray" }}>
+          <Text style={{ fontSize: 16, color: "gray" }}>
             Update helping Friends
           </Text>
           <Entypo name="chevron-right" color={"black"} size={24} />
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("TermsCondition")}
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
             marginTop: 10,
           }}
         >
-          <Text style={{ fontSize: 18, color: "gray" }}>
+          <Text style={{ fontSize: 16, color: "gray" }}>
             Terms & Conditions
           </Text>
           <Entypo name="chevron-right" color={"black"} size={24} />
-        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("RequestProgress")}
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop: 10,
+          }}
+        >
+          <Text style={{ fontSize: 16, color: "gray" }}>Request Progress </Text>
+          <Entypo name="chevron-right" color={"black"} size={24} />
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

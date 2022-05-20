@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   Dimensions,
+  SafeAreaView,
 } from "react-native";
 
 import Headers1 from "../../../components/Headers1";
@@ -17,13 +18,13 @@ import Feather from "react-native-vector-icons/Feather";
 
 import { updateProfile } from "../../../redux/actions/auth";
 import { connect } from "react-redux";
-import { Persons } from "../../../assets";
+import { Persons, speaker } from "../../../assets";
 import { useNavigation } from "@react-navigation/native";
 import fonts from "../../../theme/fonts";
 import colors from "../../../theme/colors";
 const { height: DEVICE_HEIGHT } = Dimensions.get("window");
 const ImagePicker = require("react-native-image-picker");
-const RequestSent = ({
+const SendingRequest = ({
   updateProfile,
   selectedLanguages,
   translation,
@@ -38,43 +39,38 @@ const RequestSent = ({
   const [msg, setMsg] = useState();
 
   return (
-    <View style={{ flex: 1 ,backgroundColor:colors.backcolor}}>
-      <Headers1 title={"Back"} />
-
-      <View style={{ flex: 1, marginHorizontal: 10 }}>
-        <View
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={{}}>
+        <Text
           style={{
-            alignItems: "center",
-            paddingTop: 50,
+            color: "gray",
+            fontSize: 24,
+            fontFamily: fonts.PoppinsRegular,
           }}
         >
-          <Text
-            style={{
-              color: "black",
-              fontSize: 24,
-              fontFamily: fonts.PoppinsRegular,
-            }}
-          >
-            Request Sent
-          </Text>
-          <Text style={{ paddingTop: 10, color: "gray" }}>
-            This request will be active for 30 seconds
-          </Text>
-          <Text style={{ color: "gray" }}>after that you can send another</Text>
-          <Text style={{ color: "gray" }}>request if no one respond</Text>
-        </View>
+          Sending Request to{"\n"}nearby FA Kit Points
+        </Text>
       </View>
-      <View
-        style={{
-          flex: 1,
-          marginHorizontal: 10,
-          justifyContent: "flex-end",
-          alignItems: "center",
-          paddingBottom: "20%",
-        }}
-      >
-        <Text style={{ color: "gray" }}>Sent request by mistake?</Text>
-        <Text style={{ color: "red", fontSize: 22 }}>Cancel</Text>
+      <View style={{ alignItems: "center", paddingVertical: 15 }}>
+      <TouchableOpacity onPress={()=>navigation.navigate("RequestSent")}>
+        <Image
+          source={speaker}
+          style={{ height: 200, width: 200, borderRadius: 200 / 2 }}
+        />
+                </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>navigation.navigate("Emergency")}>
+        <Text
+          style={{
+            color: "red",
+            fontSize: 24,
+            fontFamily: fonts.PoppinsRegular,
+            paddingTop: 10,
+          }}
+        >
+          cancel
+        </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -87,4 +83,4 @@ const mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps, {
   updateProfile,
-})(RequestSent);
+})(SendingRequest);

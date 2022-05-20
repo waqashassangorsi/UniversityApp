@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   Dimensions,
+  SafeAreaView,
 } from "react-native";
 
 import Headers1 from "../../../components/Headers1";
@@ -17,7 +18,7 @@ import Feather from "react-native-vector-icons/Feather";
 
 import { updateProfile } from "../../../redux/actions/auth";
 import { connect } from "react-redux";
-import { Persons } from "../../../assets";
+import { Persons, speaker } from "../../../assets";
 import { useNavigation } from "@react-navigation/native";
 import fonts from "../../../theme/fonts";
 import colors from "../../../theme/colors";
@@ -33,7 +34,7 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
   const [msg, setMsg] = useState();
 
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
       <Header
         containerStyle={{
           marginVertical: 5,
@@ -45,7 +46,7 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
             size={30}
             color={"gray"}
             onPress={() => {
-              navigation.openDrawer();
+              navigation.navigate("Settings");
             }}
           />
         }
@@ -70,7 +71,7 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
         </View>
         <View style={{ alignItems: "center", paddingVertical: 15 }}>
           <Image
-            source={Persons}
+            source={speaker}
             style={{ height: 200, width: 200, borderRadius: 200 / 2 }}
           />
           <Text
@@ -85,7 +86,7 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
           </Text>
         </View>
       </View> */}
-      <View style={{ flex: 1, marginHorizontal: 10 }}>
+      <View style={{ flex: 1, marginHorizontal: 10, marginBottom: "20%" }}>
         <View
           style={{
             alignItems: "center",
@@ -139,19 +140,21 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
             FA Kit Points
           </Text>
         </View>
-        <View style={{ alignItems: "center", paddingVertical: 15 }}>
+        <TouchableOpacity onPress={()=>navigation.navigate("SendingRequest")}style={{ alignItems: "center", paddingVertical: 15 }}>
           <Image
-            source={Persons}
+            source={speaker}
             style={{ height: 200, width: 200, borderRadius: 200 / 2 }}
           />
-        </View>
+        </TouchableOpacity>
         <View
           style={{
             flexDirection: "row",
             justifyContent: "space-evenly",
+            marginBottom: 20,
           }}
         >
-          <View
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Map")}
             style={{
               width: "35%",
               height: 110,
@@ -190,8 +193,9 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
                 style={{ paddingRight: 10 }}
               />
             </View>
-          </View>
-          <View
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("MyLocation")}
             style={{
               width: "35%",
               height: 110,
@@ -214,7 +218,7 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
                 padding: 10,
               }}
             >
-              Take me to{"\n"}FAK Point
+              Emergency{"\n"}Contacts
             </Text>
             <View
               style={{
@@ -230,10 +234,10 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
                 style={{ paddingRight: 10 }}
               />
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({});

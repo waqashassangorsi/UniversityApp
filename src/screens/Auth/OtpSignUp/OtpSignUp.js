@@ -37,9 +37,9 @@ const OtpSignUp = ({
 
   const [disabled, setdisabled] = useState(true);
 
-  const { phoneNumber } = route.params;
-  const { confirmation } = route.params;
-  console.log("confirmation", confirmation);
+  // const { phoneNumber } = route.params;
+  // const { confirmation } = route.params;
+  // console.log("confirmation", confirmation);
 
   useEffect(() => {
     RNOtpVerify.getHash()
@@ -51,15 +51,6 @@ const OtpSignUp = ({
     return () => RNOtpVerify.removeListener();
   }, []);
 
-  // Handle user state changes
-  //  function onAuthStateChanged(user) {
-  // console.log(user,'user')
-  // }
-
-  // useEffect(() => {
-  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-  //   return subscriber; // unsubscribe on unmount
-  // }, []);
 
   const otpHandler = (message) => {
     console.log("myresponse1", message);
@@ -150,15 +141,12 @@ const OtpSignUp = ({
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <Image
-          source={selectedLanguages == "Bulgarian" ? Logo2 : english_logo}
-          style={styles.logo_blue}
-        />
+    
 
         <View style={styles.wrapper}>
           <Text style={styles.text}>
-            {translation[3][selectedLanguages]}
-            {/* An Sms has been sent to you at */}
+            {/* {translation[3][selectedLanguages]} */}
+            An Sms has been sent to you at
           </Text>
           <Text
             style={[
@@ -169,7 +157,7 @@ const OtpSignUp = ({
               },
             ]}
           >
-            {phoneNumber}
+            {/* {phoneNumber} */}
           </Text>
 
           {disabled == true && (
@@ -196,7 +184,7 @@ const OtpSignUp = ({
                 />
                 <Text style={{ alignSelf: "center", marginLeft: -8 }}>
                   {/* s */}
-                  {translation[186][selectedLanguages]}
+                  {/* {translation[186][selectedLanguages]} */}
                 </Text>
               </View>
             </View>
@@ -211,13 +199,13 @@ const OtpSignUp = ({
                   styles.text,
                   {
                     paddingTop: 30,
-                    color: colors.yellow,
+                    color: colors.primary,
                     fontSize: 16,
                   },
                 ]}
               >
-                {translation[127][selectedLanguages].trim()}
-                {/* Resend Code */}
+                {/* {translation[127][selectedLanguages].trim()} */}
+                Resend Code
               </Text>
             </TouchableOpacity>
           )}
@@ -255,39 +243,37 @@ const OtpSignUp = ({
               },
             ]}
           >
-            {translation[4][selectedLanguages]}
-            {/* Please enter the verification code above */}
+            {/* {translation[4][selectedLanguages]} */}
+            Please enter the verification code above
           </Text>
-          <TouchableOpacity
-            onPress={() => subbmitotp()}
+        
+        </View>
+       
+      </View>
+      <View style={{flex:0.3,backgroundColor:'white',justifyContent:'center',alignItems:'center'}}>
+      <TouchableOpacity
+            onPress={() => navigation.navigate("EmergencyContact")}
             style={{
-              width: "75%",
+              width: "70%",
               height: 50,
               backgroundColor: colors.primary,
-              borderRadius: 13,
+              borderRadius: 25,
               justifyContent: "center",
-              marginVertical: 50,
-              marginHorizontal: 80,
+              marginTop: 50,
             }}
           >
             <Text
               style={{
                 alignSelf: "center",
                 justifyContent: "center",
-                fontWeight: "bold",
                 fontSize: 22,
+                color:'white'
               }}
             >
-              Next
+              NEXT
             </Text>
           </TouchableOpacity>
-        </View>
-        {/* <View style={{ marginTop: 70, marginHorizontal: 10, elevation: 1 }}>
-          <GradientButton title="Sign in" onButtonPress={() => subbmitotp()} />
-        </View> */}
-
-        {/* {<Loading visible={loading} />} */}
-      </View>
+          </View>
       {/* {this.state.show && (
       <AlertModal
         heading={this.state.msg}
@@ -318,6 +304,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     alignItems: "center",
+    justifyContent:'center',
     width: "90%",
   },
   logo_blue: {

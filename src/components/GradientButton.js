@@ -43,10 +43,10 @@ export const GradientButton = ({
     <TouchableOpacity
       onPress={onButtonPress}
       style={{
-        width: "90%",
+        width: "60%",
         height: 50,
         backgroundColor: colors.primary,
-        borderRadius: 13,
+        borderRadius: 30,
         alignContent: "center",
         alignItems: "center",
         textAlign: "center",
@@ -57,7 +57,7 @@ export const GradientButton = ({
       <View style={styles.absoluteView}>
         <Text
           style={{
-            color: "black",
+            color: "white",
             fontSize: 16,
             // fontWeight: "bold",
             fontFamily: fonts.PoppinsMedium,

@@ -24,7 +24,7 @@ const { height: DEVICE_HEIGHT } = Dimensions.get("window");
 const ImagePicker = require("react-native-image-picker");
 import SelectDropdown from "react-native-select-dropdown";
 import colors from "../../../theme/colors";
-const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
+const Language = ({ updateProfile, selectedLanguages, translation, user }) => {
   const navigation = useNavigation();
   const [profilePath, setFilePath] = useState("");
   const [namee, setName] = useState(user != null ? user.name : "");
@@ -34,11 +34,11 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
   const [msg, setMsg] = useState();
   const countries = ["Chinese", "English", "Spanish", "Italian", "French"];
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: colors.backcolor }}>
       <View
         style={{
           flex: 1,
-          paddingHorizontal: 10,
+          paddingLeft: "10%",
           justifyContent: "flex-end",
         }}
       >
@@ -53,18 +53,18 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
         </Text>
         <Text
           style={{
-            color: "black",
+            color: "gray",
             paddingBottom: 30,
           }}
         >
           Currently Available in English & Chinese
         </Text>
       </View>
-      <View style={{ flex: 1, paddingLeft: 10 }}>
+      <View style={{ flex: 1, paddingLeft: "10%" }}>
         <SelectDropdown
           defaultButtonText={"Chinese"}
           buttonStyle={{
-            backgroundColor: colors.lightWhite,
+            backgroundColor: colors.lightGray,
             width: "45%",
             height: 40,
             marginTop: 5,
@@ -88,7 +88,7 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
           }}
         />
       </View>
-      <View
+      <TouchableOpacity onPress={navigation.navigate("WalkThrough")}
         style={{
           flex: 1,
 
@@ -99,7 +99,7 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
         }}
       >
         <Text style={{ color: colors.primary }}>Next</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -111,4 +111,4 @@ const mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps, {
   updateProfile,
-})(Emergency);
+})(Language);

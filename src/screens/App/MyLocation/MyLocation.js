@@ -54,7 +54,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Settings, LoginManager, Profile } from "react-native-fbsdk-next";
 const { height: DEVICE_HEIGHT } = Dimensions.get("window");
 const ImagePicker = require("react-native-image-picker");
-var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var data = [1, 2, 3, 4,];
 const MyLocation = ({ signin, route, signupwithfb, getMylocations }) => {
   const navigation = useNavigation();
   useEffect(() => {
@@ -86,7 +86,7 @@ const MyLocation = ({ signin, route, signupwithfb, getMylocations }) => {
               fontFamily: fonts.PoppinsRegular,
             }}
           >
-            Police{" "}
+            Police
           </Text>
         </View>
         <View style={{ width: "10%" }}>

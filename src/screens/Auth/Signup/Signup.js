@@ -77,8 +77,8 @@ const Signup = ({ navigation, signin, selectedLanguages, translation }) => {
     })();
   };
 
-  console.log("selectlanguage", selectedLanguages);
-  console.log("first", translation[0]);
+  // console.log("selectlanguage", selectedLanguages);
+  // console.log("first", translation[0]);
 
   useEffect(() => {
     Geolocation.getCurrentPosition((data) => console.log(data));
@@ -221,23 +221,21 @@ const Signup = ({ navigation, signin, selectedLanguages, translation }) => {
         >
           <TextInput
             placeholder="Name"
+            selectionColor={"gray"}
+            theme={{
+              colors: { primary: colors.backcolor, underlineColor: "transparent" },
+            }}
             style={{
               width: "90%",
-              backgroundColor: "white",
+              backgroundColor: colors.backcolor,
               height: 40,
               fontSize: 20,
               marginLeft: 20,
               borderBottomWidth: 1,
             }}
-            selectionColor={colors.red}
             keyboardType={"number-pad"}
-            onChangeText={(pno) => setmnumber(pno)}
-            theme={{
-              colors: {
-                primary: colors.red,
-                underlineColor: "transparent",
-              },
-            }}
+            // onChangeText={(pno) => setmnumber(pno)}
+           
             maxLength={10}
           />
           <View
@@ -308,7 +306,7 @@ const Signup = ({ navigation, signin, selectedLanguages, translation }) => {
               /> */}
               <Text
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: colors.backcolor,
                   borderBottomWidth: 0,
                   fontSize: 19,
                   marginTop: 8,
@@ -322,19 +320,19 @@ const Signup = ({ navigation, signin, selectedLanguages, translation }) => {
             <TextInput
               style={{
                 width: "84%",
-                backgroundColor: "white",
+                backgroundColor: colors.backcolor,
                 height: 40,
                 fontSize: 20,
                 marginRight: 10,
                 marginLeft: 10,
                 borderBottomWidth: 1,
               }}
-              selectionColor={colors.red}
+              selectionColor={colors.backcolor}
               keyboardType={"number-pad"}
               onChangeText={(pno) => setmnumber(pno)}
               theme={{
                 colors: {
-                  primary: colors.red,
+                  primary: colors.backcolor,
                   underlineColor: "transparent",
                 },
               }}
@@ -351,16 +349,16 @@ const Signup = ({ navigation, signin, selectedLanguages, translation }) => {
           </View>
         </View>
 
-        <View style={{ marginTop: 70, marginHorizontal: 10, elevation: 1 }}>
+        <View style={{ marginTop: 150, marginHorizontal: 10, elevation: 1 }}>
           <GradientButton
-            title="Next"
-            onButtonPress={() =>
-              signInWithPhoneNumber("+" + callingCode + mnumber)
-            }
+            title="NEXT"
             // onButtonPress={() =>
-            //   subbmitotp()
-
+            //   signInWithPhoneNumber("+" + callingCode + mnumber)
             // }
+            onButtonPress={() =>
+              navigation.navigate("OtpSignUp")
+
+            }
           />
         </View>
 

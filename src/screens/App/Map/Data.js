@@ -1,4 +1,4 @@
-import { Persons } from "../../../assets";
+import { marker } from "../../../assets";
 export const Data = [
   {
     id: 0,
@@ -8,7 +8,7 @@ export const Data = [
       latitudeDelta: 0.01,
       longitudeDelta: 0.01,
     },
-    img: Persons,
+    img: marker,
   },
   {
     id: 1,
@@ -18,7 +18,7 @@ export const Data = [
       latitudeDelta: 0.01,
       longitudeDelta: 0.01,
     },
-    img: Persons,
+    img: marker,
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const Data = [
       latitudeDelta: 0.01,
       longitudeDelta: 0.01,
     },
-    img: Persons,
+    img: marker,
   },
   {
     id: 3,
@@ -38,6 +38,6 @@ export const Data = [
       latitudeDelta: 0.01,
       longitudeDelta: 0.01,
     },
-    img: Persons,
+    img: marker,
   },
 ];

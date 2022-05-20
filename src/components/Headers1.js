@@ -6,79 +6,75 @@ import { Header } from "react-native-elements";
 import AlertModal from "../components/AlertModal";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import CustomText from "./Text";
-import { useNavigation,useFocusEffect } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { updatetoken } from "../redux/actions/auth";
 import messaging from "@react-native-firebase/messaging";
-const Headers1 = ({ title, route, selectedLanguages, user,updatetoken, show ,screen,rate}) => {
+import colors from "../theme/colors";
+const Headers1 = ({
+  title,
+  route,
+  selectedLanguages,
+  user,
+  updatetoken,
+  show,
+  screen,
+  rate,
+}) => {
   const navigation = useNavigation();
   const [showAlert, setShowAlert] = useState(false);
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
-
   useFocusEffect(
     React.useCallback(() => {
+      const api_interval = setInterval(() => {
+        (async () => {
+          const fcmToken = await messaging().getToken();
 
+          const fomData = new FormData();
 
-        const api_interval = setInterval(() => {
-          (async () => {
-            const fcmToken = await messaging().getToken();
-  
-            const fomData = new FormData();
-      
-            fomData.append("u_id", user.u_id);
-            fomData.append("token", fcmToken);
-            
-            fomData.append("selectedLanguages", selectedLanguages);
-            const res = await updatetoken(fomData, navigation);
-            console.log('data us from intervel header',res)
-            if(screen!='false'){
+          fomData.append("u_id", user.u_id);
+          fomData.append("token", fcmToken);
+
+          fomData.append("selectedLanguages", selectedLanguages);
+          const res = await updatetoken(fomData, navigation);
+          console.log("data us from intervel header", res);
+          if (screen != "false") {
             if (
               res.data.trip_status == "Started" ||
               res.data.trip_status == "Accepted"
             ) {
               navigation.navigate("ArrivalStatus");
-            }
-            else if(res.data.trip_status == "payment"){
-      
-              navigation.navigate('BillingPayment',{
-                tripid:res.data.data.trip_id,
-                did:res.data.data.driver_id,
-                payment:res.data.data.payableamt,
-                screen:'Map'
-                
-              })
+            } else if (res.data.trip_status == "payment") {
+              navigation.navigate("BillingPayment", {
+                tripid: res.data.data.trip_id,
+                did: res.data.data.driver_id,
+                payment: res.data.data.payableamt,
+                screen: "Map",
+              });
             }
             // else if (res.data.trip_status == 'rate') {
             //   navigation.navigate('Ratings',{
             //   Dataa:res.data,
             //     })
             //   }
-            }
-            // console.log("data was", res.data)
-           
-         
-           
-          })();
+          }
+          // console.log("data was", res.data)
+        })();
       }, 7000);
       return () => {
-          clearInterval(api_interval);
-      }
-    
-   
+        clearInterval(api_interval);
+      };
     }, [])
   );
 
-   
   return (
     <Header
       containerStyle={{
-        marginVertical: 20,
+        marginVertical: 10,
       }}
       backgroundColor={"transparent"}
       leftComponent={
- 
-      
         <View
           style={{
             flexDirection: "row",
@@ -86,31 +82,25 @@ const Headers1 = ({ title, route, selectedLanguages, user,updatetoken, show ,scr
             alignItems: "center",
           }}
         >
-            {show != 'No' && (
-          <Ionicons
-            name={"chevron-back"}
-            size={24}
-            color={colors.secondary}          
-            onPress={() => { rate=='false'?
-              navigation.navigate('Map'):navigation.goBack()
-            }}
-            style={{ paddingTop: 4 }}
-          />
-            )}
-      
-          <View>
-            <CustomText
-              title={title}
-              type={"large"}
-              color={"black"}
-              style={{
-                fontSize: 20,
-                marginLeft: 6,
-                fontWeight: "bold",
+          {show != "No" && (
+            <Ionicons
+              name={"chevron-back"}
+              size={24}
+              color={colors.secondary}
+              onPress={() => {
+                rate == "false"
+                  ? navigation.navigate("Map")
+                  : navigation.goBack();
               }}
+              style={{ paddingTop: 4 }}
             />
-          </View>
+          )}
+
+          <View>
             
+            <Text style={{ fontSize: 20, marginLeft: 0,color:'gray' }}>{title}</Text>
+          </View>
+
           {/* <View
             style={{
               marginTop: 10,
@@ -157,7 +147,6 @@ const Headers1 = ({ title, route, selectedLanguages, user,updatetoken, show ,scr
             )}
           </View> */}
         </View>
-    
       }
     />
   );
@@ -169,5 +158,5 @@ const mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps, {
   sendsos,
-  updatetoken
+  updatetoken,
 })(Headers1);

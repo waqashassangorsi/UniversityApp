@@ -6,10 +6,11 @@ import { connect } from "react-redux";
 import { CommonActions } from "@react-navigation/routers";
 import { applogo, flag } from "../../../assets";
 import colors from "../../../theme/colors";
-import { alltranslation } from "../../../redux/actions/auth";
+import { alltranslation, updatePassword } from "../../../redux/actions/auth";
+import AsyncStorage from "@react-native-community/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 const Splash = ({
-  navigation,
   isLoggedIn,
   from,
   alltranslation,
@@ -17,20 +18,21 @@ const Splash = ({
   translation,
   user,
 }) => {
-  (async () => {
-    if (
-      selectedLanguages == undefined ||
-      selectedLanguages == "" ||
-      selectedLanguages == null
-    ) {
-      const res = await alltranslation("English");
-    } else {
-      const res = await alltranslation(selectedLanguages);
-    }
+  const navigation=useNavigation()
+ 
 
-    console.log("selectedLanguages1234", res);
-  })();
-
+  // const user=1;
+  // const storedata=async()=>{
+  //   await AsyncStorage.setItem("userdata",user)
+  //   console.log('firstuser', user)
+  //  }
+  //  const getdata=async()=>{
+  //   const valuedata=await AsyncStorage.getItem("userdata")
+  //   console.log('firstuservalue', valuedata)
+  //  }
+  
+  //   storedata();
+  //   getdata();
   useEffect(() => {
     console.log("user data is", user);
 
@@ -55,10 +57,11 @@ const Splash = ({
         navigation.dispatch(
           CommonActions.reset({
             index: 0,
-            routes: [{ name: "WalkThrough" }],
+            routes: [{ name: "Language" }],
           })
         );
       }
+     
     }, 2000);
     return () => clearTimeout(timer);
   }, [navigation]);

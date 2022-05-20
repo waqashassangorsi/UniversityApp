@@ -236,7 +236,7 @@ const Emergency = ({ updateProfile, selectedLanguages, translation, user }) => {
         </Modal>
       </View>
       <View style={styles.container1}>
-        <GradientButton title="Next" />
+        <GradientButton title="Next"  onButtonPress={()=>navigation.navigate("Emergency")}/>
       </View>
     </SafeAreaView>
   );

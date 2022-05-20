@@ -23,7 +23,7 @@ import fonts from "../../../theme/fonts";
 import colors from "../../../theme/colors";
 const { height: DEVICE_HEIGHT } = Dimensions.get("window");
 const ImagePicker = require("react-native-image-picker");
-const RequestProgress = ({
+const Helping = ({
   updateProfile,
   selectedLanguages,
   translation,
@@ -50,7 +50,7 @@ const RequestProgress = ({
             size={30}
             color={"gray"}
             onPress={() => {
-              navigation.navigate("Settings");
+              navigation.openDrawer();
             }}
           />
         }
@@ -233,4 +233,4 @@ const mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps, {
   updateProfile,
-})(RequestProgress);
+})(Helping);

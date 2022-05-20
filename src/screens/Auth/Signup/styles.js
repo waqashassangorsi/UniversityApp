@@ -5,7 +5,7 @@ import colors from "../../../theme/colors";
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor:colors.backcolor,
   },
   logo_blue: {
     height: 100,
