@@ -24,11 +24,14 @@ import fonts from "../../../theme/fonts";
 import colors from "../../../theme/colors";
 const { height: DEVICE_HEIGHT } = Dimensions.get("window");
 const ImagePicker = require("react-native-image-picker");
+import AsyncStorage from "@react-native-community/async-storage";
+
 const WalkThrough = ({
   updateProfile,
   selectedLanguages,
   translation,
   user,
+  
 }) => {
   const navigation = useNavigation();
   const [profilePath, setFilePath] = useState("");
@@ -37,6 +40,13 @@ const WalkThrough = ({
   const [walkhrough, setwalkhrough] = useState(1);
   const [showAlert, setShowAlert] = useState(false);
   const [colorful, setcolorful] = useState(1);
+   const valuedata="1";
+
+  const storeVAlue=async()=>{
+    await AsyncStorage.setItem("userdata", valuedata)
+    console.log('firstvalue', valuedata)
+    navigation.navigate("Emergency")
+   }
   const nextsecreen = () => {
     if (walkhrough == 4) {
       navigation.navigate("Signup");
@@ -122,7 +132,7 @@ const WalkThrough = ({
           paddingBottom: "10%",
         }}
       >
-        <TouchableOpacity onPress={()=>navigation.navigate("Emergency")}>
+        <TouchableOpacity onPress={()=>storeVAlue()}>
           <Text style={{ color: "red" }}>Skip</Text>
         </TouchableOpacity>
         <View style={{ flexDirection: "row" }}>

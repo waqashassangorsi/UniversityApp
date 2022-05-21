@@ -50,8 +50,7 @@ const Helping = ({
             size={30}
             color={"gray"}
             onPress={() => {
-              navigation.openDrawer();
-            }}
+navigation.navigate("Settings")            }}
           />
         }
       />

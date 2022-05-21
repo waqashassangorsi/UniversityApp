@@ -14,6 +14,7 @@ import { Header, Badge } from "react-native-elements";
 import Octicons from "react-native-vector-icons/Octicons";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
+import { useFocusEffect } from "@react-navigation/native";
 
 import { updateProfile } from "../../../redux/actions/auth";
 import { connect } from "react-redux";
@@ -36,6 +37,25 @@ const RequestProgress = ({
   const [loading, setloading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [msg, setMsg] = useState();
+  const [timer, settimer] = useState(15);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      let j = 0;
+      // const [timer, settimer] = useState(15);
+
+      const api_interval = setInterval((i) => {
+        //hello();
+        j++;
+        alert("sdsd")
+
+        console.log("myivalue", j);
+      }, 7000);
+      return () => {
+        clearInterval(api_interval);
+      };
+    }, [])
+  );
 
   return (
     <View style={{ flex: 1 }}>
@@ -57,7 +77,7 @@ const RequestProgress = ({
       />
 
       <View style={{ flex: 1, marginHorizontal: 10 }}>
-        {/* <View
+        <View
           style={{
             alignItems: "center",
             paddingTop: 20,
@@ -74,74 +94,71 @@ const RequestProgress = ({
             Request in Progress
           </Text>
         </View>
-        <View style={{ alignItems: "center", paddingVertical: 15 }}>
-          <Image
-            source={speaker}
-            style={{ height: 200, width: 200, borderRadius: 200 / 2 }}
-          />
+        <View
+          style={{
+            alignItems: "center",
+
+            justifyContent: "center",
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: colors.primary,
+              width: 250,
+              height: 250,
+              borderRadius: 250 / 2,
+            }}
+            onPress={() => navigation.navigate("RequestSent")}
+          >
+            <View
+              style={{
+                height: 200,
+                width: 200,
+                backgroundColor: "white",
+                borderRadius: 200 / 2,
+              }}
+            >
+              <View
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flex: 1,
+                }}
+              >
+                <Text
+                  style={{
+                    color: colors.primary,
+                    fontSize: 60,
+                    fontFamily: fonts.PoppinsRegular,
+                  }}
+                >
+                  {timer}
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
+          style={{ justifyContent: "center", alignItems: "center" }}
+          onPress={() => navigation.navigate("Emergency")}
+        >
           <Text style={{ color: "red", fontSize: 22, paddingTop: 20 }}>
             Cancel
           </Text>
-        </View> */}
-        <View
-          style={{
-            alignItems: "center",
-            paddingTop: 20,
-            // backgroundColor: "blue",
-          }}
-        >
-          <Text
-            style={{
-              color: "black",
-              fontSize: 24,
-              fontWeight: "bold",
-            }}
-          >
-            Help is on his way
-          </Text>
-          <Text
-            style={{
-              color: "gray",
-              fontSize: 16,
-              fontFamily: fonts.PoppinsRegular,
-              paddingTop: "10%",
-            }}
-          >
-            One Point shop has accepted
-          </Text>
-          <Text
-            style={{
-              color: "gray",
-              fontSize: 16,
-              fontFamily: fonts.PoppinsRegular,
-            }}
-          >
-            your request
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-            paddingTop: "15%",
-          }}
-        >
-          <Text style={{ color: colors.primary, fontSize: 22 }}>
-            Approximate arrival
-          </Text>
-          <Text style={{ color: colors.primary, fontSize: 22 }}>10 mins</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View
         style={{
           flexDirection: "row",
           justifyContent: "space-evenly",
-          alignItems: "center",
-          flex: 1,
+          marginBottom: 60,
         }}
       >
-        <View
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Map")}
           style={{
             width: "35%",
             height: 110,
@@ -180,8 +197,9 @@ const RequestProgress = ({
               style={{ paddingRight: 10 }}
             />
           </View>
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("MyLocation")}
           style={{
             width: "35%",
             height: 110,
@@ -204,7 +222,7 @@ const RequestProgress = ({
               padding: 10,
             }}
           >
-            Take me to{"\n"}FAK Point
+            Emergency{"\n"}Contacts
           </Text>
           <View
             style={{
@@ -220,7 +238,7 @@ const RequestProgress = ({
               style={{ paddingRight: 10 }}
             />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

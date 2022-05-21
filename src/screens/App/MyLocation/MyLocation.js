@@ -57,6 +57,8 @@ const ImagePicker = require("react-native-image-picker");
 var data = [1, 2, 3, 4,];
 const MyLocation = ({ signin, route, signupwithfb, getMylocations }) => {
   const navigation = useNavigation();
+  const [isModalVisible, setModalVisible] = useState(false);
+
   useEffect(() => {
     // setLoading(true);
     (async () => {
@@ -95,6 +97,12 @@ const MyLocation = ({ signin, route, signupwithfb, getMylocations }) => {
       </View>
     </View>
   );
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+  const closemodal = () => {
+    setModalVisible(false);
+  };
   return (
     <ScrollView
       style={{
@@ -102,7 +110,7 @@ const MyLocation = ({ signin, route, signupwithfb, getMylocations }) => {
         backgroundColor: "white",
       }}
     >
-      <Headers1 title="Back" />
+      <Headers1 title="Back" onButtonPress={()=>navigation.navigate("Emergency")}/>
       <View style={{ marginLeft: 10 }}>
         <Text style={{ fontWeight: "bold", fontWeight: "bold", fontSize: 22 }}>
           National Emergency NOS
@@ -113,7 +121,7 @@ const MyLocation = ({ signin, route, signupwithfb, getMylocations }) => {
         renderItem={renderItem}
         keyExtractor={(item) => item}
       />
-      <View
+      <TouchableOpacity
         style={{
           flex: 1,
           marginTop: "30%",
@@ -130,7 +138,8 @@ const MyLocation = ({ signin, route, signupwithfb, getMylocations }) => {
         >
           Inform your friend
         </Text>
-      </View>
+      </TouchableOpacity>
+      
     </ScrollView>
   );
 };

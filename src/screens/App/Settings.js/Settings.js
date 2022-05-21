@@ -51,7 +51,7 @@ const Settings = ({ signin, route, userData, signupwithfb, logoutSuccess }) => {
         backgroundColor: colors.backcolor,
       }}
     >
-      <Headers1 title="Back" />
+      <Headers1 title="Back"  onButtonPress={()=>navigation.navigate("Emergency")}/>
       <View style={{ marginHorizontal: 20, flex: 1 }}>
         <View>
           <Text style={{ fontWeight: "bold", fontSize: 22 }}>Settings</Text>
@@ -93,6 +93,17 @@ const Settings = ({ signin, route, userData, signupwithfb, logoutSuccess }) => {
           <Text style={{ fontSize: 16, color: "gray" }}>
             Terms & Conditions
           </Text>
+          <Entypo name="chevron-right" color={"black"} size={24} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Helping")}
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop: 10,
+          }}
+        >
+          <Text style={{ fontSize: 16, color: "gray" }}>Help is on his way </Text>
           <Entypo name="chevron-right" color={"black"} size={24} />
         </TouchableOpacity>
         <TouchableOpacity

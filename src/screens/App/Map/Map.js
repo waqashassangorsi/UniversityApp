@@ -19,6 +19,7 @@ import { notificationListener } from "../../../components/Notificationservice";
 import { addfavlocation } from "../../../redux/actions/auth";
 import { Loading } from "../../../components/Loading";
 import colors from "../../../theme/colors";
+import Headers1 from "../../../components/Headers1";
 import { Data } from "./Data";
 
 const Map = ({
@@ -329,27 +330,12 @@ const Map = ({
   /////////////////////
   return (
     <View style={styles.container}>
-      <Header
-        containerStyle={{
-          marginVertical: 5,
-        }}
-        backgroundColor={"transparent"}
-        leftComponent={
-          <Octicons
-            name={"three-bars"}
-            size={30}
-            color={colors.yellow}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-            style={{}}
-          />
-        }
-      />
+      
+      <Headers1 title="Back"/>
       <Loading visible={loading} />
       <MapView
         ref={mapRef}
-        style={StyleSheet.absoluteFill}
+        style={styles.map}
         initialRegion={curLoc}
       >
         {Data.map((val, i) => {

@@ -18,50 +18,34 @@ const Splash = ({
   translation,
   user,
 }) => {
-  const navigation=useNavigation()
- 
+  const navigation = useNavigation();
 
-  // const user=1;
   // const storedata=async()=>{
-  //   await AsyncStorage.setItem("userdata",user)
-  //   console.log('firstuser', user)
+  //   await AsyncStorage.setItem("userdata",user1)
+  //   console.log('data ====>', user1)
   //  }
-  //  const getdata=async()=>{
-  //   const valuedata=await AsyncStorage.getItem("userdata")
-  //   console.log('firstuservalue', valuedata)
-  //  }
-  
-  //   storedata();
-  //   getdata();
-  useEffect(() => {
-    console.log("user data is", user);
 
+  const getdata = async () => {
+    const valuedata = await AsyncStorage.getItem("userdata");
+
+    console.log("firstuservalue", valuedata);
+    return valuedata;
+  };
+
+  // storedata();
+  useEffect(() => {
     const timer = setTimeout(() => {
-      if (isLoggedIn) {
-        if (user.is_first_registered == 0) {
-          navigation.dispatch(
-            CommonActions.reset({
-              index: 0,
-              routes: [{ name: "EditProfile" }],
-            })
-          );
-        } else {
-          navigation.dispatch(
-            CommonActions.reset({
-              index: 0,
-              routes: [{ name: "Map" }],
-            })
-          );
-        }
-      } else {
-        navigation.dispatch(
-          CommonActions.reset({
-            index: 0,
-            routes: [{ name: "Language" }],
-          })
-        );
-      }
-     
+      getdata()
+        .then((response) => {
+          console.log("firstresponse",response);
+          if (response == "1" || response == 1) {
+            navigation.navigate("Emergency");
+          } else {
+            navigation.navigate("WalkThrough");
+          }
+        })
+
+        .catch((err) => alert(err)); // TypeError: failed to fetch (the text may vary);
     }, 2000);
     return () => clearTimeout(timer);
   }, [navigation]);

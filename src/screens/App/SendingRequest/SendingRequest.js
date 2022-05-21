@@ -38,6 +38,15 @@ const SendingRequest = ({
   const [showAlert, setShowAlert] = useState(false);
   const [msg, setMsg] = useState();
 
+  useEffect(() => {
+    console.log("user data is", user);
+
+    const timer = setTimeout(() => {
+      navigation.navigate("RequestSent")
+     
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [navigation]);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <View style={{}}>
@@ -50,8 +59,9 @@ const SendingRequest = ({
         >
           Sending Request to{"\n"}nearby FA Kit Points
         </Text>
+        
       </View>
-      <View style={{ alignItems: "center", paddingVertical: 15 }}>
+      <View style={{ alignItems: "center", paddingVertical: 15 ,backgroundColor:colors.primary,width:250,height:250,borderRadius:250/2,justifyContent:'center'}}>
       <TouchableOpacity onPress={()=>navigation.navigate("RequestSent")}>
         <Image
           source={speaker}
@@ -59,7 +69,9 @@ const SendingRequest = ({
         />
                 </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>navigation.navigate("Emergency")}>
+      
+      </View>
+      <TouchableOpacity onPress={()=>navigation.navigate("Emergency")}>
         <Text
           style={{
             color: "red",
@@ -71,7 +83,6 @@ const SendingRequest = ({
           cancel
         </Text>
         </TouchableOpacity>
-      </View>
     </View>
   );
 };

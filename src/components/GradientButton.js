@@ -54,6 +54,7 @@ export const GradientButton = ({
         alignItems: "center",
       }}
     >
+      
       <View style={styles.absoluteView}>
         <Text
           style={{

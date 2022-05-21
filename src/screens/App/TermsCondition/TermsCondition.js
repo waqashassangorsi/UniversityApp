@@ -33,7 +33,8 @@ const TermsCondition = ({ selectedLanguages, translation }) => {
         backgroundColor: "white",
       }}
     >
-      <Headers1 title="Back" />
+      <Headers1 title="Back"     onButtonPress={()=>
+      navigation.navigate("Emergency")}/>
 
       <View style={{ flex: 1, paddingHorizontal: 15, paddingRight: 16 }}>
         <View style={{}}>

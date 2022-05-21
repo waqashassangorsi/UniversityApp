@@ -19,6 +19,7 @@ const Headers1 = ({
   show,
   screen,
   rate,
+  onButtonPress
 }) => {
   const navigation = useNavigation();
   const [showAlert, setShowAlert] = useState(false);
@@ -69,9 +70,10 @@ const Headers1 = ({
   );
 
   return (
+    
     <Header
       containerStyle={{
-        marginVertical: 10,
+        // marginVertical: 10,
       }}
       backgroundColor={"transparent"}
       leftComponent={
@@ -87,65 +89,16 @@ const Headers1 = ({
               name={"chevron-back"}
               size={24}
               color={colors.secondary}
-              onPress={() => {
-                rate == "false"
-                  ? navigation.navigate("Map")
-                  : navigation.goBack();
-              }}
+              onPress={onButtonPress}
               style={{ paddingTop: 4 }}
             />
           )}
 
-          <View>
+          <TouchableOpacity onPress={onButtonPress}>
             
-            <Text style={{ fontSize: 20, marginLeft: 0,color:'gray' }}>{title}</Text>
-          </View>
+            <Text style={{ fontSize: 20, marginLeft: 0,color:'gray', }}>{title}</Text>
+          </TouchableOpacity>
 
-          {/* <View
-            style={{
-              marginTop: 10,
-              backgroundColor: "#ffc93c",
-              borderRadius: 8,
-              marginBottom: 10,
-              height: 30,
-              width: 80,
-              marginLeft: 290,
-              position: "absolute",
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => soshandle()}
-              style={{
-                fontSize: 10,
-                color: "black",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: colors.black,
-                  textAlign: "center",
-                  justifyContent: "center",
-                  textAlignVertical: "center",
-                  marginTop: 5,
-                }}
-              >
-                SOS
-              </Text>
-            </TouchableOpacity>
-            {showAlert && (
-              <AlertModal
-                heading={msg}
-                button1="OK"
-                button2="Cancel"
-                onYesPress={yespress}
-                onNoPress={cancelpress}
-                onOkPress={() => {
-                  setShowAlert(false);
-                }}
-              />
-            )}
-          </View> */}
         </View>
       }
     />

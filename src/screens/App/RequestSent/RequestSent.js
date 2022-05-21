@@ -39,7 +39,9 @@ const RequestSent = ({
 
   return (
     <View style={{ flex: 1 ,backgroundColor:colors.backcolor}}>
-      <Headers1 title={"Back"} />
+      <Headers1 title={"Back"} 
+      onButtonPress={()=>
+      navigation.navigate("RequestProgress")}/>
 
       <View style={{ flex: 1, marginHorizontal: 10 }}>
         <View
